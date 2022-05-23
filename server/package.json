@@ -1,0 +1,46 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Examination System Backend Server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jeet989/ExamSGP.git"
+  },
+  "keywords": [
+    "react",
+    "express",
+    "\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D",
+    "\u001b[F\u001b[F\u001b[B\u001b[B\u001b[F\u001b[D\u001b[B\u001b[F\u001b[B\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[Dexpress",
+    "node",
+    "mongodb",
+    "electron"
+  ],
+  "author": "Jeet Mehta, Mann Mehta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jeet989/ExamSGP/issues"
+  },
+  "homepage": "https://github.com/Jeet989/ExamSGP#readme",
+  "devDependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "generate-password": "^1.5.1",
+    "js-cookie": "^2.2.1",
+    "mongodb": "^3.6.2",
+    "mongoose": "^5.10.6",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.4.13",
+    "path": "^0.12.7",
+    "request": "^2.88.2"
+  }
+}
