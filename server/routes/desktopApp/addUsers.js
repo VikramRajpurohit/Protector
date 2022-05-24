@@ -18,81 +18,81 @@ mainRouter.route("/")
             uppercase: true,
             numbers: true,
         });
-        let queryData  = [];
-        let queryData2  = [];
+        let queryData = [];
+        let queryData2 = [];
         let emails = [];
-        for(let i=0;i<body.length;i++) {
+        for (let i = 0; i < body.length; i++) {
             emails.push(body[i].email);
             queryData.push({
-                "email" : body[i].email,
-                "passwd" : passwords[i],
-                "role" : body[i].role,
-                "orgId" : body[i].orgId  
+                "email": body[i].email,
+                "passwd": passwords[i],
+                "role": body[i].role,
+                "orgId": body[i].orgId
             });
             queryData2.push({
-                "email":body[i].email,
-                "exam":[]
+                "email": body[i].email,
+                "exam": []
             })
         }
-        user.collection.find({"_id" : {$in: [queryData[0].orgId]}}).count().then((data) => {
+        user.collection.find({ "_id": { $in: [queryData[0].orgId] } }).count().then((data) => {
             console.log(data);
         }).catch((err) => {
             console.log(err);
         })
-        user.collection.find({"email" : { $in: emails }}).count()
-        .then((countUserExist) => {
-            console.log(countUserExist);
-            if(countUserExist===0) {
-                forms.collection.insertMany(queryData2)
-                .then(() => {
-                    console.log("forms inserted");
-                })
-                .catch((err)=>{
-                    console.log("forms error",err);
-                })
-                user.collection.insertMany(queryData)
-                .then(() => {
-                    console.log("success");
-                    
-                    for(let i=0;i<queryData.length;i++) {
-                        let toEmail = queryData[i].email;
-                        let pwd = queryData[i].passwd;
+        user.collection.find({ "email": { $in: emails } }).count()
+            .then((countUserExist) => {
+                console.log(countUserExist);
+                if (countUserExist === 0) {
+                    forms.collection.insertMany(queryData2)
+                        .then(() => {
+                            console.log("forms inserted");
+                        })
+                        .catch((err) => {
+                            console.log("forms error", err);
+                        })
+                    user.collection.insertMany(queryData)
+                        .then(() => {
+                            console.log("success");
 
-                        let transporter = nodemailer.createTransport({
-                            service: 'gmail',
-                            auth: {
-                                user: 'royalrajpurohit52@gmail.com',
-                                pass: process.env.password
-                            }
-                        });
+                            for (let i = 0; i < queryData.length; i++) {
+                                let toEmail = queryData[i].email;
+                                let pwd = queryData[i].passwd;
 
-                        let mailOptions = {
-                            from: 'royalrajpurohit52@gmail.com',
-                            to: toEmail,
-                            subject: 'Your password',
-                            text: `Your Organization has been successfully registered with our service. Here is your temporary password ${pwd} & This is your Registered MailId from your Organization  ${toEmail}`
-                        }
-                        transporter.sendMail(mailOptions, (err, info) => {
-                            if (err) {
-                                console.log(err);
-                                res.status(200).json({"status" : "All Users Generated Successfully ! but mail not sent !"})
-                            }
-                            else {
-                                console.log("Mail sent");
-                                res.status(200).json({"status" : "All Users Generated Successfully !"})
+                                let transporter = nodemailer.createTransport({
+                                    service: 'gmail',
+                                    auth: {
+                                        user: 'vikramsingh.capsitech@gmail.com',
+                                        pass: 'Vikram@9680490601'
+                                    }
+                                });
+
+                                let mailOptions = {
+                                    from: 'vikramsingh.capsitech@gmail.com',
+                                    to: toEmail,
+                                    subject: 'Your password',
+                                    text: `Your Organization has been successfully registered with our service. Here is your temporary password ${pwd} & This is your Registered MailId from your Organization  ${toEmail}`
+                                }
+                                transporter.sendMail(mailOptions, (err, info) => {
+                                    if (err) {
+                                        console.log(err);
+                                        res.status(200).json({ "status": "All Users Generated Successfully ! but mail not sent !" })
+                                    }
+                                    else {
+                                        console.log("Mail sent");
+                                        res.status(200).json({ "status": "All Users Generated Successfully !" })
+                                    }
+                                })
                             }
                         })
-                    }
-                })
-                .catch((err) => {
-                    console.log("error");   
-                    res.status(200).json({"status" : "Server Side Error Occured !"})
-                })
-            } else {
-                res.status(200).json({"status" :countUserExist+" user/users from the file already exist, please check and generate again after updating the files !"})
-            }
-        }).catch((err) => {
-            res.status(500);
-        });
+                        .catch((err) => {
+                            console.log("error");
+                            res.status(200).json({ "status": "Server Side Error Occured !" })
+                        })
+                } else {
+                    res.status(200).json({ "status": countUserExist + " user/users from the file already exist, please check and generate again after updating the files !" })
+                }
+            }).catch((err) => {
+                res.status(500);
+            });
     });
 module.exports = mainRouter;
