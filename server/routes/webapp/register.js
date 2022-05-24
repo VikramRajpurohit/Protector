@@ -66,7 +66,7 @@ mainRouter.route("/signin")
                     console.log(someValue[0].role)
                     res.statusCode = 200;
                     res.setHeader('Content-Type', 'application/json');
-                    res.json({ "statusMessage": "Login Successful", "role": someValue[0].role, "email": someValue[0].email, "orgId": someValue[0].orgId});
+                    res.json({ "statusMessage": "Login Successful", "role": someValue[0].role, "email": someValue[0].email, "orgId": someValue[0].orgId });
                 }
                 else {
                     res.status(401).send({ error: 'Incorrect Credentials' });
@@ -139,12 +139,12 @@ mainRouter.route("/confirmation")
                                     let transporter = nodemailer.createTransport({
                                         service: 'gmail',
                                         auth: {
-                                            user: 'sgpexamination@gmail.com',
-                                            pass: process.env.password
+                                            user: 'vikramsingh.capsitech@gmail.com',
+                                            pass: 'Vikram@9680490601'
                                         }
                                     });
                                     let mailOptions = {
-                                        from: 'sgpexamination@gmail.com',
+                                        from: 'vikramsingh.capsitech@gmail.com',
                                         to: req.body.details.email,
                                         subject: 'Application Accepted',
                                         text: `Your Organization has been successfully registered with our service. Now you can create an exam paper with all sorts of functions which are avaiable with our system. Here is your temporary password ${password} & This is your Registered MailId from your Organization  ${req.body.details.email}`
@@ -174,7 +174,7 @@ mainRouter.route("/confirmation")
                                 })
                                 .catch((err) => {
                                     console.log("error");
-                                    res.status(500).send({error : "Server Side Error Occured !" })
+                                    res.status(500).send({ error: "Server Side Error Occured !" })
                                 })
                         } else {
                             res.status(200).json({ "statusMessage": "Organization with this email id already exists.." })

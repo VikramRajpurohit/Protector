@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Navbar, Nav } from 'react-bootstrap'
+// import { Container } from 'react-bootstrap'
 import Axios from 'axios';
 import dashboard from './dashboard'
 import Cookies from 'js-cookie';
@@ -31,7 +33,7 @@ export default class admin extends React.Component {
                     passwd: this.state.passwd
                 };
                 Axios.post('http://localhost:5000/signin', { admin_users })
-                    .then(res => {                        
+                    .then(res => {
                         if (res.data.role !== "super") {
                             alert("You are NOT ADMIN");
                         }
@@ -66,25 +68,42 @@ export default class admin extends React.Component {
     render() {
         return (
             <div style={{ flex: 1 }}>
-                <Container style={{ border: '12vh', borderColor: 'black', borderWidth: '12vh' }}>
-                    <h2>Admin Login</h2>
-                    <Form onSubmit={this.handleSubmit}>
-                        <FormGroup>
-                            <Label>Email</Label>
-                            <Input type="email" name="email" value={this.state.email} onChange={this.handleInputChange} />
-                        </FormGroup>
+                <Navbar style={{ backgroundColor: '#f09941' }}>
+                    <Container>
+                        <Navbar.Brand href="/signup" style={{ color: '#233c7b', fontSize: 35, fontWeight: 500 }}>Invigilator</Navbar.Brand>
+                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                        <Navbar.Collapse id="basic-navbar-nav">
+                            <Nav className="me-auto" style={{ color: '#233c7b', fontSize: 25, fontWeight: 500, marginLeft: '20', marginTop: 8 }}>
+                                <Nav.Link href="/admin">Admin</Nav.Link>
+                                <Nav.Link href="/signup">User</Nav.Link>
+                            </Nav>
+                        </Navbar.Collapse>
+                    </Container>
+                </Navbar>
+                <div className='container'>
 
-                        <FormGroup>
-                            <Label>Password</Label>
-                            <Input type="password"
-                                name="passwd"
-                                value={this.state.passwd}
-                                onChange={this.handleInputChange} />
-                        </FormGroup>
+                    <Container style={{ marginTop: 50, display: 'flex', flexDirection: 'column', alignItems: 'center' }} >
+                        <h2 style={{ textAlign: 'center' }}>Admin Login</h2>
+                        <Form onSubmit={this.handleSubmit} style={{ width: '40%' }} >
+                            <FormGroup>
+                                <Label>Email</Label>
+                                <Input type="email" name="email" value={this.state.email} onChange={this.handleInputChange} />
+                            </FormGroup>
 
-                        <Button type="submit" color="primary" >Login</Button>
-                    </Form>
-                </Container>
+                            <FormGroup>
+                                <Label>Password</Label>
+                                <Input type="password"
+                                    name="passwd"
+                                    value={this.state.passwd}
+                                    onChange={this.handleInputChange} />
+                            </FormGroup>
+                            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                <Button type="submit" color="primary" style={{ width: '50%' }} >Login</Button>
+                            </div>
+
+                        </Form>
+                    </Container>
+                </div>
             </div>
         )
     }

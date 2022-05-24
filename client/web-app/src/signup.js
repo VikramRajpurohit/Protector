@@ -17,6 +17,7 @@ import Container from '@material-ui/core/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import dashboard from './dashboard';
 import { Input } from '@material-ui/core';
+import { Navbar, Nav } from 'react-bootstrap'
 
 export default class signup extends React.Component {
 
@@ -155,11 +156,23 @@ export default class signup extends React.Component {
 
     render() {
         return (
-            <div>
+            <div style={{ flex: 1 }}>
+                <Navbar style={{ backgroundColor: '#f09941' }}>
+                    <div className='container'>
+                        <Navbar.Brand href="/signup" style={{ color: '#233c7b', fontSize: '2.5rem', fontWeight: 500 }}>Invigilator</Navbar.Brand>
+                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                        <Navbar.Collapse id="basic-navbar-nav">
+                            <Nav className="me-auto" style={{ color: '#233c7b', fontSize: 25, fontWeight: 500, marginLeft: '20', marginTop: 8 }}>
+                                <Nav.Link href="/admin">Admin</Nav.Link>
+                                <Nav.Link href="/signup">User</Nav.Link>
+                            </Nav>
+                        </Navbar.Collapse>
+                    </div>
+                </Navbar>
                 <Container component="main" maxWidth="xs" dark>
                     <CssBaseline />
                     <div className={this.state.classes.paper}>
-                        <Typography component="h1" variant="h5" style={{marginTop: '20%', marginBottom: '10%'}}>
+                        <Typography component="h1" variant="h5" style={{ marginTop: '20%', marginBottom: '10%', textAlign: 'center', border: 'ridge' }}>
                             Register Your Organization
                         </Typography>
                         <form className={this.state.classes.form} noValidate onSubmit={this.sendValues}>
@@ -222,27 +235,27 @@ export default class signup extends React.Component {
                                 </Grid>
                                 <Grid item xs={12}>
                                     <Button
-                                    variant="contained"
-                                    component="label"
+                                        variant="contained"
+                                        component="label"
                                     >
                                         Upload ID Proof
                                         <Input
-                                        type="file"
-                                        onChange={this.fileUpload}
-                                        name="id"
+                                            type="file"
+                                            onChange={this.fileUpload}
+                                            name="id"
                                         />
                                     </Button>
                                 </Grid>
                                 <Grid item xs={12}>
                                     <Button
-                                    variant="contained"
-                                    component="label"
+                                        variant="contained"
+                                        component="label"
                                     >
                                         Upload Photo
                                         <Input
-                                        type="file"
-                                        onChange={this.photoUpload}
-                                        name="photo"
+                                            type="file"
+                                            onChange={this.photoUpload}
+                                            name="photo"
                                         />
                                     </Button>
                                 </Grid>
@@ -253,9 +266,9 @@ export default class signup extends React.Component {
                                 variant="contained"
                                 color="primary"
                                 className={this.state.classes.submit}
-                                style={{marginTop: '4%'}}
+                                style={{ marginTop: '4%' }}
                             >
-                                Register 
+                                Register
                             </Button>
                         </form>
                     </div>
