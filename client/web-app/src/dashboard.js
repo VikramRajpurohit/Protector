@@ -223,7 +223,7 @@ export default class dashboard extends React.Component {
             .then((res) => {
                 let values = res.data;
                 this.setState({
-                    userDetails: values, 
+                    userDetails: values,
                     currentView: 'rejected'
                 });
             })
@@ -259,7 +259,7 @@ export default class dashboard extends React.Component {
         return (
             <div>
                 <CssBaseline />
-                <AppBar position="absolute" className={clsx(this.state.classes.appBar, this.state.open && this.state.classes.appBarShift)}>
+                <AppBar position="absolute" className={clsx(this.state.classes.appBar, this.state.open && this.state.classes.appBarShift)} style={{backgroundColor: '#f09941',color: '#233c7b'}}>
                     <Toolbar className={this.state.classes.toolbar}>
                         <IconButton
                             edge="start"
@@ -272,7 +272,7 @@ export default class dashboard extends React.Component {
                         </IconButton>
                         <Typography component="h1" variant="h6" color="inherit" noWrap className={this.state.classes.title}>
                             Dashboard
-          </Typography>
+                        </Typography>
 
                     </Toolbar>
                 </AppBar>
@@ -290,7 +290,7 @@ export default class dashboard extends React.Component {
                         </IconButton>
                     </div>
                     <Divider />
-                    <List>
+                    <List style={{color: '#233c7b'}}>
                         <IconButton
                             edge="start"
                             color="inherit"
@@ -301,7 +301,7 @@ export default class dashboard extends React.Component {
                         </IconButton>
                     </List>
                     <Divider />
-                    <List>
+                    <List style={{color: '#233c7b'}}>
                         <IconButton
                             edge="start"
                             color="inherit"
@@ -312,7 +312,7 @@ export default class dashboard extends React.Component {
                         </IconButton>
                     </List>
                     <Divider />
-                    <List>
+                    <List style={{color: '#233c7b'}}>
                         <IconButton
                             edge="start"
                             color="inherit"
@@ -323,7 +323,7 @@ export default class dashboard extends React.Component {
                         </IconButton>
                     </List>
                 </Drawer>
-                <Table dark
+                <Table light
                     style={{ marginTop: '8vh' }}
                 >
                     <thead>

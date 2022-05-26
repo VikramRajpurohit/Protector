@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -18,8 +18,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import dashboard from './dashboard';
 import { Input } from '@material-ui/core';
 import { Navbar, Nav } from 'react-bootstrap'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Alert from 'react-popup-alert'
 
 export default class signup extends React.Component {
+
 
     constructor() {
         super()
@@ -52,6 +56,9 @@ export default class signup extends React.Component {
             photoName: '',
             university: '',
             designation: '',
+            type: 'success',
+            text: '',
+            show: false,
             classes: useStyles,
         }
     }
@@ -61,7 +68,7 @@ export default class signup extends React.Component {
         event.preventDefault();
 
         if ((this.state.firstname === '') || (this.state.lastname === '') || (this.state.email === '') || (this.state.id === '') || (this.state.photo === '') || (this.state.university === '') || (this.state.designation === '' || this.state.idName === '' || this.state.photoName === '')) {
-            alert("Enter All Details.. ");
+            toast.warn("Enter All Details.. ");
         }
         else {
             if (/^([\w\d](\.)*)+\@([\w\.]{1,2})+(\w)$/.test(this.state.email) && (this.state.firstname.length >= 3) && (this.state.lastname.length >= 3) && (this.state.university.length >= 3) && (this.state.designation.length >= 2)) {
@@ -80,7 +87,8 @@ export default class signup extends React.Component {
 
                 Axios.post("http://localhost:5000/signup", { details })
                     .then(res => {
-                        alert(res.data.statusMessage);
+                        //show as a alert box
+                        toast.success(res.data.statusMessage);
                         this.setState({
                             firstname: '',
                             lastname: '',
@@ -99,12 +107,12 @@ export default class signup extends React.Component {
 
                     })
                     .catch((err) => {
-                        alert(err.response.data.error);
+                        toast.error(err.response.data.error);
                         // console.log(err.data.statusMessage, "Inside Catch");
                     });
             }
             else {
-                alert("Enter Proper Details");
+                toast.error("Enter Proper Details");
             }
 
         }
@@ -169,6 +177,7 @@ export default class signup extends React.Component {
                         </Navbar.Collapse>
                     </div>
                 </Navbar>
+                <ToastContainer />
                 <Container component="main" maxWidth="xs" dark>
                     <CssBaseline />
                     <div className={this.state.classes.paper}>

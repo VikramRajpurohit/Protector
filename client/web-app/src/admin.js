@@ -6,7 +6,9 @@ import { Navbar, Nav } from 'react-bootstrap'
 import Axios from 'axios';
 import dashboard from './dashboard'
 import Cookies from 'js-cookie';
-
+// import Alert from 'react-popup-alert'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default class admin extends React.Component {
     constructor() {
@@ -35,10 +37,10 @@ export default class admin extends React.Component {
                 Axios.post('http://localhost:5000/signin', { admin_users })
                     .then(res => {
                         if (res.data.role !== "super") {
-                            alert("You are NOT ADMIN");
+                            toast.error("You are NOT ADMIN");
                         }
                         else {
-                            alert(res.data.statusMessage);
+                            toast(res.data.statusMessage);
                             // Cookies.set(this.state.email, this.state.passwd, {expires: 1});
                             this.props.history.push('./dashboard')
                             this.state = {
@@ -53,15 +55,15 @@ export default class admin extends React.Component {
 
                     })
                     .catch((err) => {
-                        alert(err.response.data.error);
+                        toast.error(err.response.data.error);
                     });
             }
             else {
-                alert("Minimum Password Length Is 6");
+                toast.error("Minimum Password Length Is 6");
             }
         }
         else {
-            alert("Enter Proper Mail ID");
+            toast.error("Enter Proper Mail ID");
         }
     }
 
@@ -80,6 +82,7 @@ export default class admin extends React.Component {
                         </Navbar.Collapse>
                     </Container>
                 </Navbar>
+                <ToastContainer/>
                 <div className='container'>
 
                     <Container style={{ marginTop: 50, display: 'flex', flexDirection: 'column', alignItems: 'center' }} >

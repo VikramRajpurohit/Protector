@@ -36,6 +36,7 @@ img {
 body {
 font-size: large; 
 font-family: 'Poppins', sans-serif;
+max-width: '80%';
 }
 
 
@@ -79,8 +80,8 @@ a, a:hover, a:focus {
 #sidebar {
     min-width: 250px;
     max-width: 250px;
-    background: #7386D5;
-    color: #fff;
+    background: #f09941;
+    color: #233c7b;
     transition: all 0.3s;
 }
 
@@ -90,7 +91,7 @@ a, a:hover, a:focus {
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #6d7fcc;
+    background: #f09941;
 }
 
 #sidebar ul.components {

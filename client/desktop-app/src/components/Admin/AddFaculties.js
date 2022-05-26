@@ -112,7 +112,7 @@ class AddFaculties extends Component {
         if (this.state.uploadedFlag) {
             displayUploadedData.push(
                 <div>
-                    <Table dark>
+                    <Table style={{backgroundColor:'#fff'}}>
                         <thead>
                             <tr>
                                 <th>#</th>

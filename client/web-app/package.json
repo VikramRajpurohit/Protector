@@ -21,8 +21,10 @@
     "react-dom": "^16.13.1",
     "react-modal": "^3.11.2",
     "react-pdf": "^5.0.0",
+    "react-popup-alert": "^2.0.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
+    "react-toastify": "^9.0.1",
     "reactstrap": "^8.6.0"
   },
   "scripts": {
