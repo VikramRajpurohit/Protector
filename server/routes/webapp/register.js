@@ -139,12 +139,12 @@ mainRouter.route("/confirmation")
                                     let transporter = nodemailer.createTransport({
                                         service: 'gmail',
                                         auth: {
-                                            user: 'vikramsingh.capsitech@gmail.com',
-                                            pass: 'Vikram@9680490601'
+                                            user: 'admin@demo.com',
+                                            pass: 'adminpss'
                                         }
                                     });
                                     let mailOptions = {
-                                        from: 'vikramsingh.capsitech@gmail.com',
+                                        from: 'admin@demo.com',
                                         to: req.body.details.email,
                                         subject: 'Application Accepted',
                                         text: `Your Organization has been successfully registered with our service. Now you can create an exam paper with all sorts of functions which are avaiable with our system. Here is your temporary password ${password} & This is your Registered MailId from your Organization  ${req.body.details.email}`

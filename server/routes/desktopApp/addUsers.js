@@ -61,13 +61,13 @@ mainRouter.route("/")
                                 let transporter = nodemailer.createTransport({
                                     service: 'gmail',
                                     auth: {
-                                        user: 'vikramsingh.capsitech@gmail.com',
-                                        pass: 'Vikram@9680490601'
+                                        user: 'admin@demo.com',
+                                        pass: 'adminpss'
                                     }
                                 });
 
                                 let mailOptions = {
-                                    from: 'vikramsingh.capsitech@gmail.com',
+                                    from: 'admin@demo.com',
                                     to: toEmail,
                                     subject: 'Your password',
                                     text: `Your Organization has been successfully registered with our service. Here is your temporary password ${pwd} & This is your Registered MailId from your Organization  ${toEmail}`

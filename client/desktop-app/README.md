@@ -31,14 +31,3 @@ To run the project with the development tools open and the live reloading activa
 ```bash
 npm run dev
 ```
-
-## Building the project
-
-To build the project run:
-
-```bash
-npm run build
-```
-
-
-An optimized version of the code will be generated in the `dist/` folder. The `dist/` folder and the `main.js` file make up your application. Now you just have to distribute it according to the [electron documentation](https://electronjs.org/docs/tutorial/application-distribution).

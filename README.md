@@ -1,3 +1,15 @@
+I tried my best with this project but in some cases , i was can't perform well. because of my exams i'm not able to deploy this. i was just think for this project like . when students will enrolled for exams by teacher of institute they will get email for their password with this they will also get link of their institute software link .
+
+Replace admin@demo.com with your email
+Replace adminpss with your pasword
+
+just make an quiz exams using googleforms and upload it 
+
+upload students Excel files & Faculty Excel Files. 
+
+thank you!
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -66,4 +78,4 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-"# ExamSGP" 
+
